@@ -1,0 +1,32 @@
+name: Build and Deploy mdBook
+
+on:
+  push:
+    branches:
+      - main  # 或者您使用的主分支名称
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Rust
+      uses: actions/setup-rust@v1
+
+    - name: Install mdBook
+      run: cargo install mdbook
+
+    - name: Build mdBook
+      run: mdbook build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./book
