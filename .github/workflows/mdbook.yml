@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master  # 或者您用作主分支的其他名称
+      - main  # 或者您用作主分支的其他名称
 
 jobs:
   deploy:
