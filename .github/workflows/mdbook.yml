@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 或者是您用作主分支的其他名称
+      - master  # 或者您用作主分支的其他名称
 
 jobs:
   deploy:
@@ -26,6 +26,11 @@ jobs:
 
       - name: Build the book
         run: mdbook build  # 使用 mdBook 构建书籍
+
+      - name: Set up Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3  # 使用 peaceiris 的 GitHub Pages 部署动作
