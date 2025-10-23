@@ -11,7 +11,10 @@ jobs:
     name: Deploy
 
     steps:
-      - uses: actions/checkout@v4  # 检出代码
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # 禁止默认 token，使用你自己的 token
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
@@ -28,7 +31,9 @@ jobs:
         run: mdbook build  # 使用 mdBook 构建书籍
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          personal_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./book  # 直接部署 `book` 目录
+          token: ${{ secrets.GH_TOKEN }}   # 这里用你的 fine-grained token
+          branch: gh-pages                 # 部署分支（自动创建）
+          folder: book                     # mdBook 构建输出目录
+          clean: true                      # 清理旧文件
