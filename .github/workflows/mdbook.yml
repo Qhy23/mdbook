@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GH_TOKEN }}   # 这里用你的 fine-grained token
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages                 # 部署分支（自动创建）
           folder: book                     # mdBook 构建输出目录
           clean: true                      # 清理旧文件
