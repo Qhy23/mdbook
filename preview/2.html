@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>实验一 - 计算机网络技术基础实验</title>
+        <title>实验二 - 计算机网络技术基础实验</title>
 
 
         <!-- Custom HTML head -->
@@ -180,106 +180,60 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="实验一-网络基本概念-预习报告"><a class="header" href="#实验一-网络基本概念-预习报告">实验一 网络基本概念 预习报告</a></h1>
+<h1 id="实验二-windows环境下用户配置及管理-预习报告"><a class="header" href="#实验二-windows环境下用户配置及管理-预习报告">实验二 Windows环境下用户配置及管理 预习报告</a></h1>
 <p>钱昊远  2023011151</p>
 <h2 id="实验步骤与重点"><a class="header" href="#实验步骤与重点">实验步骤与重点</a></h2>
-<h3 id="一-本地网络配置"><a class="header" href="#一-本地网络配置">(一) 本地网络配置</a></h3>
-<h4 id="网络地址设置及测试"><a class="header" href="#网络地址设置及测试">网络地址设置及测试</a></h4>
-<h5 id="1-了解子网掩码的作用以及网段的概念"><a class="header" href="#1-了解子网掩码的作用以及网段的概念">1. 了解子网掩码的作用以及网段的概念</a></h5>
-<h6 id="a-设置-ip-地址的子网掩码"><a class="header" href="#a-设置-ip-地址的子网掩码">a) 设置 IP 地址的子网掩码</a></h6>
+<h3 id="一-本地用户和组的配置和管理-单独完成"><a class="header" href="#一-本地用户和组的配置和管理-单独完成">(一) 本地用户和组的配置和管理 (单独完成)</a></h3>
+<ol>
+<li>创建本地用户账号、更名和删除用户账号。</li>
+<li>创建本地组，并修改其属性。</li>
+<li>进行安全策略的设置和测试：</li>
+</ol>
 <ul>
-<li>
-<p>IP 地址： <code>192.168.20.200+实验桌号</code></p>
-</li>
-<li>
-<p>子网掩码： <code>255.255.255.0</code></p>
-</li>
-<li>
-<p>网关：空</p>
-</li>
-<li>
-<p>DNS ：空</p>
-</li>
+<li>设置用户及组的权限；</li>
+<li>将用户帐号加入不同组中，测试并记录用户最终获得的权限；</li>
+<li>其它。</li>
 </ul>
-<h6 id="b-确认设置的-ip-地址是否生效"><a class="header" href="#b-确认设置的-ip-地址是否生效">b) 确认设置的 IP 地址是否生效</a></h6>
-<pre><code class="language-powershell">ipconfig
+<h3 id="二-资源的权限管理-同组同学合作完成"><a class="header" href="#二-资源的权限管理-同组同学合作完成">(二) 资源的权限管理 (同组同学合作完成)</a></h3>
+<ol>
+<li>新建多个用户，将其加入多个不同的用户组中。</li>
+<li>设置具有 NTFS 文件格式的文件夹／文件的 “安全”属性。</li>
+<li>用新建用户进行登录，体会权限限定。</li>
+<li>观察系统盘下的 Windows 文件夹以及 Users 文件夹的安全设置。（<strong>不可更改！</strong>）</li>
+<li>共享文件夹。</li>
+<li>访问共享文件夹</li>
+</ol>
+<h3 id="三-安装和配置网络打印服务"><a class="header" href="#三-安装和配置网络打印服务">(三) 安装和配置网络打印服务</a></h3>
+<p>让局域网中其他用户也可方便的使用同一台打印机，实现打印机共享。</p>
+<p>注：提供网络打印服务的同学，需要在共享前测试打印机性能，即打印测试页，并在测试通过后再将打印机进行共享。</p>
+<h3 id="四-tcp-端口-1394453389"><a class="header" href="#四-tcp-端口-1394453389">(四) TCP 端口 139、445、3389</a></h3>
+<h4 id="远程链接"><a class="header" href="#远程链接">远程链接</a></h4>
+<ol>
+<li>在计算机 A 上启用远程桌面；</li>
+<li>在计算机 A 上给 userA 授予远程桌面连接权限；</li>
+<li>在计算机 B 上用 userA 账户测试远程桌面连接。</li>
+</ol>
+<h4 id="查看当前-tcpip-网络连接与进程列表"><a class="header" href="#查看当前-tcpip-网络连接与进程列表">查看当前 TCP/IP 网络连接与进程列表</a></h4>
+<p>查看所有的端口占用情况</p>
+<pre><code class="language-powershell">netstat -ano
 </code></pre>
-<h6 id="c-连通性测试"><a class="header" href="#c-连通性测试">c) 连通性测试</a></h6>
-<p>同实验室网关服务器</p>
-<pre><code class="language-powershell">ping 192.168.20.200  # 实验室网关服务器
+<p>查看 PID 对应的进程</p>
+<pre><code class="language-powershell">tasklist
 </code></pre>
-<p>电机系网关服务器、 DNS 服务器</p>
-<pre><code class="language-powershell">ping 166.111.60.1  # 电机系网关服务器
-ping 166.111.8.28  # DNS 服务器
-</code></pre>
-<p>本机、未知 IP</p>
-<pre><code class="language-powershell">ping 192.168.20.2**  # 本机 IP
-ping localhost
-ping 192.168.2.1  # 未知 IP
-</code></pre>
-<h5 id="2-网关的作用"><a class="header" href="#2-网关的作用">2. 网关的作用</a></h5>
-<p>网卡的 IPV4 添加网关 <code>192.168.20.200</code></p>
-<pre><code class="language-powershell">ping 192.168.20.2**  # 本机 IP
-ping localhost
-ping 166.111.60.1  # 电机系网关服务器
-ping 166.111.8.28  # DNS 服务器
-ping 192.168.2.1  # 未知 IP
-</code></pre>
-<h4 id="dns-相关实验内容"><a class="header" href="#dns-相关实验内容">DNS 相关实验内容</a></h4>
-<h5 id="1-未设置-dns-测试"><a class="header" href="#1-未设置-dns-测试">1. 未设置 DNS 测试</a></h5>
-<pre><code class="language-powershell">ping info.tsinghua.edu.cn
-</code></pre>
-<h5 id="2-设置-dns-后设置"><a class="header" href="#2-设置-dns-后设置">2. 设置 DNS 后设置</a></h5>
-<p>设置本机 DNS 服务器的 IP 地址为 <code>166.111.8.28</code></p>
-<pre><code class="language-powershell">ping info.tsinghua.edu.cn
-</code></pre>
-<h5 id="3-nslookup-测试"><a class="header" href="#3-nslookup-测试">3. <code>nslookup</code> 测试</a></h5>
-<pre><code class="language-powershell">nslookup www.tsinghua.edu.cn
-nslookup www.pku.edu.cn
-nslookup www.sohu.com
-nslookup www.microsoft.com
-nslookup www.google.com
-nslookup localhost
-</code></pre>
-<pre><code class="language-powershell">nslookup 192.168.20.200  # 实验室网关服务器
-nslookup 192.168.20.2**  # 本机 IP
-nslookup 166.111.60.1  # 电机系网关服务器
-nslookup 192.168.2.1  # 未知 IP
-</code></pre>
-<h5 id="4-未提供-dns-服务的-ip-测试"><a class="header" href="#4-未提供-dns-服务的-ip-测试">4. 未提供 DNS 服务的 IP 测试</a></h5>
-<p>设置本机 DNS 服务器的 IP 地址为 <code>192.168.20.200</code></p>
-<pre><code class="language-powershell">ping info.tsinghua.edu.cn
-</code></pre>
-<h5 id="5-浏览器访问测试"><a class="header" href="#5-浏览器访问测试">5. 浏览器访问测试</a></h5>
-<p>在设置与未设置 DNS 的条件下，分别访问 <a href="http://www.tsinghua.edu.cn">www.tsinghua.edu.cn</a></p>
-<h4 id="网络常用命令"><a class="header" href="#网络常用命令">网络常用命令</a></h4>
-<h5 id="1-tracert"><a class="header" href="#1-tracert">1. <code>Tracert</code></a></h5>
-<pre><code class="language-powershell">tracert 192.168.20.2**  # 本机 IP
-tracert 192.168.20.200  # 实验室网关服务器
-tracert 166.111.60.232  # 校园网某主机
-tracert www.baidu.com
-</code></pre>
-<h5 id="2-arp"><a class="header" href="#2-arp">2. <code>arp</code></a></h5>
-<pre><code class="language-powershell">arp -a
-</code></pre>
-<h5 id="3-配置多个网络地址"><a class="header" href="#3-配置多个网络地址">3. 配置多个网络地址</a></h5>
-<h4 id="dhcp-客户端设置"><a class="header" href="#dhcp-客户端设置">DHCP 客户端设置</a></h4>
-<h5 id="1-自动获取-ip-地址"><a class="header" href="#1-自动获取-ip-地址">1. 自动获取 IP 地址</a></h5>
-<h5 id="2-关闭-dhcp-client-服务"><a class="header" href="#2-关闭-dhcp-client-服务">2. 关闭 DHCP Client 服务</a></h5>
-<h5 id="3-打开-dhcp-client-服务并自动获取-ip-地址"><a class="header" href="#3-打开-dhcp-client-服务并自动获取-ip-地址">3. 打开 DHCP Client 服务并自动获取 IP 地址</a></h5>
-<h3 id="二-sniffer-pro-软件的简单使用选做"><a class="header" href="#二-sniffer-pro-软件的简单使用选做">（二） Sniffer pro 软件的简单使用（选做）</a></h3>
+<h2 id="思考题"><a class="header" href="#思考题">思考题</a></h2>
+<h3 id="1"><a class="header" href="#1">1.</a></h3>
+<p>了解“安全”权限和“共享”权限对某个账户限制时，只有用此账号访问本计算机时才能真正体会到权限设置的意义。体会“安全”和“共享”权限合适有效，当某一个文件夹“共享”权限和自身的“安全”权限不一致时，Windows 操作系统是如何确定用户的最终访问权限？</p>
+<h6 id="回答"><a class="header" href="#回答">回答</a></h6>
+<p>应该是同时考虑“共享”权限与“安全”权限，按照最小权限取交集。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../main.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../preview/1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../preview/2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -287,13 +241,10 @@ tracert www.baidu.com
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../main.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../preview/1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../preview/2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
