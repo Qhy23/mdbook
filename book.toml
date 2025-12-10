@@ -2,7 +2,6 @@
 authors = ["Qhy23"]
 description = "计算机网络技术基础实验"
 language = "zh-CN"
-multilingual = false
 src = "./src"
 title = "计算机网络技术基础实验"
 
