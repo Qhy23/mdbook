@@ -2,4 +2,4 @@
 
 - [实验指导书](./pdf/网络实验指导书2025秋.pdf)
 
-下载[网页代码](./assets/code.zip)
+下载[网页代码](assets/code.zip)
