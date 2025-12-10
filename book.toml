@@ -5,9 +5,6 @@ language = "zh-CN"
 src = "./src"
 title = "计算机网络技术基础实验"
 
-[build]
-extra-watch-dirs = ["src/assets"]
-
 [preprocessor.katex]
 after = ["links"]
 output = "htmlAndMathml"
