@@ -8,7 +8,7 @@ title = "计算机网络技术基础实验"
 [preprocessor.katex]
 after = ["links"]
 output = "htmlAndMathml"
-pre-render = true
+pre_render = true
 
 [output.html]
 additional-css = ["css/fontsize.css"]
