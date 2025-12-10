@@ -19,7 +19,7 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
-          mdbook-version: "latest"  # 安装最新版本的 mdBook
+          mdbook-version: "0.4.52"  # 安装 0.4.52 版本, 新版似乎有些接口要修改
 
       - uses: supplypike/setup-bin@v4
         with:
